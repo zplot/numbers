@@ -29,8 +29,13 @@ object Utils {
   }
 
   /** Return the divisors of n. */
-  def divisors(n: BigInt): List[BigInt] =
-    for (i <- List.range(BigInt(1), n+1) if n % i == 0) yield i
+  def divisors(n: BigInt): List[BigInt] = {
+    val tmp1 = primeFactors(n)
+    val tmp2 = for (i <- tmp1) yield i._1
+    tmp2
+
+  }
+    //for (i <- List.range(BigInt(1), n+1) if n % i == 0) yield i
 
   /** Is 'n' a prime number? */
   def isPrime(n: BigInt) :Boolean = divisors(n).length == 2
