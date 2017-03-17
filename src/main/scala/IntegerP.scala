@@ -35,17 +35,11 @@ object IntegerP {
 
   def fromBigIntToInteger(x: BigInt): Integer = {
     def loop(a: BigInt): Integer = {
-      //println("a = " + a)
-      //println("isPrime(a) = " + isPrime(a))
       if (isPrime(a)) Prime(a) else {
         val b: SortedMap[Prime, BigInt] = fromBigIntToSortedMap2(a)
-        //println("b = " + b)
         val c = for (i <- b) yield {
-          //println("i = " + i)
-          //if (isPrime(i._2) || i._2 == 1) (i._1, Prime(i._2)) else (i._1, Composite(SortedMap(i._1 -> loop(i._2))))
           if (isPrime(i._2) || i._2 == 1) (i._1, Prime(i._2)) else (i._1, loop(i._2))
         }
-        //println("c = " + c)
         Composite(c)
       }
     }
