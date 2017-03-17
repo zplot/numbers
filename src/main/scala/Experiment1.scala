@@ -18,11 +18,24 @@ object Experiment1 extends App {
   println(fromBigIntToSortedMap(z))
   println
 
-  println("Lo difícil")
+  println("Fase 1")
   println
   println("z = " + z)
   println("primeFactors(z) = " + primeFactors(z))
   println(fromBigIntToInteger(z))
+
+  println
+
+  println("Fase 2")
+  println
+  for (i <- 1 to 1000) {
+
+    println(i + "   " + complexity(i))
+  }
+
+
+
+
 
 }
 
