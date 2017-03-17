@@ -35,9 +35,12 @@ object Utils {
     tmp2
 
   }
-    //for (i <- List.range(BigInt(1), n+1) if n % i == 0) yield i
+
 
   /** Is 'n' a prime number? */
-  def isPrime(n: BigInt) :Boolean = divisors(n).length == 2
+  def isPrime(n: BigInt) :Boolean = {
+    val tmp = primeFactors(n)
+    tmp.length == 1 && tmp.head._2 == 1
+  }
 
 }

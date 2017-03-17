@@ -3,13 +3,11 @@
   */
 
 
-import scala.collection.immutable.SortedMap
+import scala.collection.immutable.{Iterable, SortedMap}
 import Utils._
 
 
-
-
-object IntegerP extends App {
+object IntegerP {
 
 
   trait Integer
@@ -36,29 +34,27 @@ object IntegerP extends App {
 
 
   def fromBigIntToInteger(x: BigInt): Integer = {
-
-
-
     def loop(a: BigInt): Integer = {
-
+      println("a = " + a)
+      println("isPrime(a) = " + isPrime(a))
       if (isPrime(a)) Prime(a) else {
-
         val b: SortedMap[Prime, BigInt] = fromBigIntToSortedMap2(a)
-
+        println("b = " + b)
         val c = for (i <- b) yield {
-
-          if (isPrime(i._2) || i._2 == 1) (i._1, Prime(i._2)) else (i._1, Composite(SortedMap(i._1 -> fromBigIntToInteger(i._2))))
+          println("i = " + i)
+          //if (isPrime(i._2) || i._2 == 1) (i._1, Prime(i._2)) else (i._1, Composite(SortedMap(i._1 -> loop(i._2))))
+          if (isPrime(i._2) || i._2 == 1) (i._1, Prime(i._2)) else (i._1, loop(i._2))
         }
-
+        println("c = " + c)
         Composite(c)
       }
-
-
     }
-
-
     loop(x)
+  }
 
+  def numberComposites(x: Composite): Int = {
+
+    4
 
   }
 
@@ -66,22 +62,8 @@ object IntegerP extends App {
 
 
 
-  val s4: Integer = Prime(7)
 
-  val map1 = SortedMap(Prime(2) -> Prime(3), Prime(3) -> Composite(SortedMap(Prime(2) -> Prime(3))))
-  val s5: Integer = Composite(map1)
 
-  println(s5)
-
-  val z = BigInt("8752874")
-  println(primeFactors(z))
-  println(fromBigIntToSortedMap(z))
-  println
-  println
-  println("Lo difícil")
-  println
-
-  println(fromBigIntToInteger(z))
 
 
 
