@@ -28,10 +28,13 @@ object Experiment1 extends App {
 
   println("Fase 2")
   println
-  for (i <- 1 to 1000) {
+  for (i <- 1 to 5) {
+    val tmp: BigInt = BigInt(16).pow(i)
 
-    println(i + "   " + complexity(i))
+    println(i + "   " + tmp + "   " + primeFactors(tmp) + "   " + complexity(tmp))
   }
+
+
 
 
 

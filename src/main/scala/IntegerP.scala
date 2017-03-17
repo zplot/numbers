@@ -48,6 +48,10 @@ object IntegerP {
 
   def complexity(x: BigInt): Int = fromBigIntToInteger(x).toString.count(_ == 'C')
 
+  def minInt(x: BigInt): BigInt = {
+
+  }
+
 
 
 
